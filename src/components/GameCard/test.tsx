@@ -11,7 +11,8 @@ const props = {
 
 describe('<GameCard />', () => {
   it('should be render correctly', () => {
-    const { container } = renderWithTheme(<GameCard {...props} />)
+    // const { container } = renderWithTheme(<GameCard {...props} />)
+    renderWithTheme(<GameCard {...props} />)
     // renderizar o GameCard
 
     // verificar se tem title
@@ -33,5 +34,36 @@ describe('<GameCard />', () => {
     expect(screen.getByText(/R\$ 235,00/i)).toBeInTheDocument()
 
     // expect(container.firstChild).toMatchSnapshot()
+  })
+
+  it('should render price in label', () => {
+    renderWithTheme(<GameCard {...props} />)
+    // renderiza o componente
+    // preço não tenha line-through
+    // preço tenha o background secundário
+    const price = screen.getByText(/R\$ 235,00/i)
+    expect(price).not.toHaveStyle({
+      textDecoration: 'line-through'
+    })
+    expect(price).toHaveStyle({
+      backgroundColor: '#3CD3C1'
+    })
+  })
+
+  it('should render a line-through in price when promotional', () => {
+    renderWithTheme(<GameCard {...props} promotionalPrice="R$ 200,00" />)
+    // renderiza o componente (COM promotionalPrice) // 200 reais // 15 reais
+    // preço tenha line-through (200)
+    // preço novo promocional não vai ter line-through (15)
+
+    const price = screen.getByText(/R\$ 235,00/i)
+    const promotionalPrice = screen.getByText(/R\$ 200,00/i)
+    expect(price).toHaveStyle({
+      textDecoration: 'line-through'
+    })
+
+    expect(promotionalPrice).not.toHaveStyle({
+      textDecoration: 'line-through'
+    })
   })
 })
