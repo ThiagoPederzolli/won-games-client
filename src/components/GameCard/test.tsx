@@ -11,8 +11,8 @@ const props = {
 
 describe('<GameCard />', () => {
   it('should be render correctly', () => {
-    // const { container } = renderWithTheme(<GameCard {...props} />)
-    renderWithTheme(<GameCard {...props} />)
+    const { container } = renderWithTheme(<GameCard {...props} />)
+    // renderWithTheme(<GameCard {...props} />)
     // renderizar o GameCard
 
     // verificar se tem title
@@ -33,7 +33,7 @@ describe('<GameCard />', () => {
 
     expect(screen.getByText(/R\$ 235,00/i)).toBeInTheDocument()
 
-    // expect(container.firstChild).toMatchSnapshot()
+    expect(container.firstChild).toMatchSnapshot()
   })
 
   it('should render price in label', () => {
