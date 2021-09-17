@@ -2,6 +2,10 @@ import GlobalStyles from 'styles/global'
 import { ThemeProvider } from 'styled-components'
 import theme from 'styles/theme'
 
+// export const parameters = {
+
+// }
+
 export const decorators = [
   (Story) => (
     <ThemeProvider theme={theme}>
@@ -19,4 +23,17 @@ export const parameters = {
       date: /Date$/,
     },
   },
+  backgrounds: {
+    default: 'won-light',
+    values: [
+      {
+        name: 'won-light',
+        value: theme.colors.white
+      },
+      {
+        name: 'won-dark',
+        value: theme.colors.mainBg
+      }
+    ]
+  }
 }
