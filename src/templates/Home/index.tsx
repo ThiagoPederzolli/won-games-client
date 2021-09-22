@@ -4,7 +4,11 @@ import Heading from 'components/Heading'
 import Menu from 'components/Menu'
 // import * as S from './styles'
 
-const Home = () => (
+export type HomeProps = {
+  heading: string
+}
+
+const Home = ({ heading }: HomeProps) => (
   <section>
     <Container>
       <Menu />
@@ -16,7 +20,7 @@ const Home = () => (
     </Container>
     <Container>
       <Heading lineLeft lineColor="secondary">
-        Most popular
+        {heading}
       </Heading>
     </Container>
     <Container>
