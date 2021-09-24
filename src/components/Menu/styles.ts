@@ -146,7 +146,7 @@ export const RegisterBox = styled.div`
   `}
 `
 
-export const CreateAccout = styled.a`
+export const CreateAccount = styled.a`
   ${({ theme }) => css`
     text-decoration: none;
     color: ${theme.colors.primary};
