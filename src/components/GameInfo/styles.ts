@@ -34,7 +34,7 @@ export const Description = styled.p`
     color: ${theme.colors.gray};
     margin-bottom: ${theme.spacings.small};
     ${media.greaterThan('medium')`
-      max-width: 77rem
+      max-width: 77rem;
     `}
   `}
 `
