@@ -1,10 +1,10 @@
 import { GetStaticProps } from 'next'
-import Home, { HomeProps } from 'templates/Home'
+import Home, { HomeTemplateProps } from 'templates/Home'
 import bannersMock from 'components/BannerSlider/mock'
 import gamesMock from 'components/GameCardSlider/mock'
 import highlightMock from 'components/Highlight/mock'
 
-export default function Index(props: HomeProps) {
+export default function Index(props: HomeTemplateProps) {
   return <Home {...props} />
 }
 
