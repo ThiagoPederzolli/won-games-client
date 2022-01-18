@@ -43,6 +43,7 @@ export interface QueryGameBySlug_games_platforms {
 export interface QueryGameBySlug_games {
   __typename: "Game";
   name: string;
+  id: string;
   short_description: string;
   description: string;
   price: number;
