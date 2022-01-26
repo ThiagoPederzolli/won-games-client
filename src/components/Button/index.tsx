@@ -10,6 +10,9 @@ export type ButtonProps = {
   icon?: JSX.Element
   // Para ações de click, trabalhamos com a tipagem do MouseEvent,
   // e especificamos que seu elemento é um HTMLButton
+  // ---------------------------------------------------
+  // Quando em uma tipagem, o termo void for definido
+  // significa que a função não retornará algo, mas executará algum código
   onClick?: () => (event: React.MouseEvent<HTMLButtonElement>) => void
 }
 
