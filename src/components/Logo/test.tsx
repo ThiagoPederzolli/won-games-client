@@ -18,7 +18,7 @@ describe('<Logo />', () => {
     renderWithTheme(<Logo color="black" />)
 
     expect(screen.getByLabelText(/logo won Games/i).parentElement).toHaveStyle({
-      color: '#0305137'
+      color: '#030517'
     })
   })
 

@@ -19,14 +19,9 @@
     "schema:convert": "node convertToNonNull.js",
     "types:generate": "yarn schema:download && yarn schema:convert && yarn codegen"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
     "src/**/*": [
-      "yarn lint --fix",
+      "yarn eslint --fix",
       "yarn test --findRelatedTests --bail"
     ]
   },
