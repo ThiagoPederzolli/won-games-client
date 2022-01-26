@@ -1,6 +1,8 @@
 import * as S from './styles'
 
 export type HeadingProps = {
+  // React.ReactNode é uma tipagem que permite
+  // que qualquer elemento possa ser passado
   children: React.ReactNode
   color?: 'white' | 'black'
   lineLeft?: boolean
