@@ -1,6 +1,12 @@
 import * as S from './styles'
 
 export type LogoProps = {
+  // o uso da interrogação, indica que
+  // a propriedade é opcional
+  // por prática, sempre que possível
+  // defina um valor padrão
+  // ou faça uma validação para evitar que
+  // aplicação quebre caso não seja passado um valor
   color?: 'white' | 'black'
   size?: 'normal' | 'large'
   hideOnMobile?: boolean
