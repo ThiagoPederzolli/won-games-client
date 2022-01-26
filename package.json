@@ -19,9 +19,14 @@
     "schema:convert": "node convertToNonNull.js",
     "types:generate": "yarn schema:download && yarn schema:convert && yarn codegen"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "lint-staged": {
     "src/**/*": [
-      "yarn eslint --fix",
+      "yarn lint --fix",
       "yarn test --findRelatedTests --bail"
     ]
   },
@@ -70,7 +75,7 @@
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "exact": "^0.8.0",
-    "husky": "^7.0.1",
+    "husky": "^6.0.0",
     "jest": "^27.4.7",
     "jest-styled-components": "^7.0.5",
     "lint-staged": "^11.1.0",
