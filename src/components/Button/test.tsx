@@ -2,6 +2,7 @@ import { screen } from '@testing-library/react'
 import { renderWithTheme } from 'utils/tests/helpers'
 import Button from '.'
 import theme from 'styles/theme'
+import { AddShoppingCart } from '@styled-icons/material-outlined'
 
 describe('<Button />', () => {
   it('should render the button with medium size by default', () => {
@@ -31,5 +32,22 @@ describe('<Button />', () => {
       'font-size': `${theme.font.sizes.medium}`,
       padding: `${theme.spacings.xxsmall} ${theme.spacings.xlarge}`
     })
+  })
+
+  it('should render the button with full width when fullWidth is true', () => {
+    renderWithTheme(<Button fullWidth>Buy Now</Button>)
+
+    expect(screen.getByRole('button', { name: /buy now/i })).toHaveStyle({
+      width: '100%'
+    })
+  })
+
+  it('should render the button with icon', () => {
+    renderWithTheme(
+      <Button icon={<AddShoppingCart data-testid="icon" />}>Buy now</Button>
+    )
+
+    expect(screen.getByRole('button', { name: /buy now/i })).toBeInTheDocument()
+    expect(screen.getByTestId('icon')).toBeInTheDocument()
   })
 })
