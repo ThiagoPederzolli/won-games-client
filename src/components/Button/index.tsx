@@ -1,5 +1,9 @@
-import React from 'react'
+import React, { AnchorHTMLAttributes, ButtonHTMLAttributes } from 'react'
 import * as S from './styles'
+
+type ButtonTypes =
+  | AnchorHTMLAttributes<HTMLAnchorElement>
+  | ButtonHTMLAttributes<HTMLButtonElement>
 
 export type ButtonProps = {
   children?: React.ReactNode
@@ -14,7 +18,8 @@ export type ButtonProps = {
   // Quando em uma tipagem, o termo void for definido
   // significa que a função não retornará algo, mas executará algum código
   onClick?: () => (event: React.MouseEvent<HTMLButtonElement>) => void
-}
+  as?: React.ElementType
+} & ButtonTypes
 
 const Button = ({
   children,
