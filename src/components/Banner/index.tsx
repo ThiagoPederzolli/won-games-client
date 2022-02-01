@@ -27,6 +27,10 @@ const Banner = ({
         {ribbon}
       </Ribbon>
     )}
+    {/* O uso de Image como uma div, é porque como se trata de um elemento
+    que a imagem é um background e que vai elementos em cima, trabalhar com uma div
+    é mais prático que um elemento img, mas colocamos o role pra que se entenda
+    que o papel da div é ser uma img */}
     <S.Image src={img} role="img" aria-label={title} />
     <S.Caption>
       <S.Title>{title}</S.Title>
