@@ -30,7 +30,9 @@ const Banner = ({
     {/* O uso de Image como uma div, é porque como se trata de um elemento
     que a imagem é um background e que vai elementos em cima, trabalhar com uma div
     é mais prático que um elemento img, mas colocamos o role pra que se entenda
-    que o papel da div é ser uma img */}
+    que o papel da div é ser uma img
+    podemos ver a mesma lógica no comp Highlight e a diferença entre a imagem que usamos de
+    background e a floatImage que vai acima do conteúdo, logo se usa o elemento img */}
     <S.Image src={img} role="img" aria-label={title} />
     <S.Caption>
       <S.Title>{title}</S.Title>
