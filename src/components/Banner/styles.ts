@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components'
 import media from 'styled-media-query'
 import * as RibbonStyles from 'components/Ribbon/styles'
+
 type ImageProps = {
   src: string
 }
@@ -47,7 +48,7 @@ export const Caption = styled.div`
       border-radius: 0 0 ${theme.border.radius} ${theme.border.radius};
       padding: ${theme.spacings.large};
       position: absolute;
-      top: 0;
+      left: 0;
       bottom: 0;
     `}
   `}
