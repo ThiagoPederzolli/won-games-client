@@ -19,6 +19,6 @@ describe('<Slider />', () => {
       screen.getByText(/slide 2/i).parentElement?.parentElement
     ).toHaveClass('slick-slide')
 
-    // expect(container.firstChild).toMatchSnapshot()
+    expect(container.firstChild).toMatchSnapshot()
   })
 })
