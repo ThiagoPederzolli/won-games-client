@@ -51,8 +51,8 @@ describe('<GameCardSlider />', () => {
     // expect(container.firstChild).toMatchSnapshot()
   })
 
-  it('should render the GameCardSlider with white arrows if color is passed', () => {
-    renderWithTheme(<GameCardSlider items={items} color="white" />)
+  it('should render the GameCardSlider with white arrows by default', () => {
+    renderWithTheme(<GameCardSlider items={items} />)
 
     expect(screen.getByLabelText(/previous games/i)).toHaveStyle({
       color: theme.colors.white
@@ -60,7 +60,16 @@ describe('<GameCardSlider />', () => {
     expect(screen.getByLabelText(/next games/i)).toHaveStyle({
       color: theme.colors.white
     })
+  })
 
-    // expect(container.firstChild).toMatchSnapshot()
+  it('should render the GameCardSlider with black arrows when color is passed', () => {
+    renderWithTheme(<GameCardSlider items={items} color="black" />)
+
+    expect(screen.getByLabelText(/previous games/i)).toHaveStyle({
+      color: theme.colors.black
+    })
+    expect(screen.getByLabelText(/next games/i)).toHaveStyle({
+      color: theme.colors.black
+    })
   })
 })
