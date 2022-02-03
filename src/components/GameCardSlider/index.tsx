@@ -12,12 +12,20 @@ const settings: SliderSettings = {
   arrows: true,
   slidesToShow: 4,
   infinite: false,
+  // lazyLoad define como será a transição para novos itens
+  // por exemplo, exibe-se 4 cards, mas existem 8
+  // com o ondemand, os outros 4 serão carregados apenas se a pessoa usuária
+  // clicar nas setas para ver algum card novo
+  // existe também o valor progressive, que baixará todos os 8 cards já
   lazyLoad: 'ondemand',
   responsive: [
     {
       breakpoint: 1375,
       settings: {
         arrows: false,
+        // os números quebrados são para cenários que existam mais cards
+        // do que os exibidos, assim fica uma borda do próximo
+        // facilitando que a pessoa usuária note que há outros cards
         slidesToShow: 3.2
       }
     },
