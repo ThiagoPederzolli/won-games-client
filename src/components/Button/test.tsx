@@ -51,6 +51,31 @@ describe('<Button />', () => {
     expect(screen.getByTestId('icon')).toBeInTheDocument()
   })
 
+  it('should render the minimal version', () => {
+    renderWithTheme(
+      <Button icon={<AddShoppingCart data-testid="icon" />} minimal>
+        Buy now
+      </Button>
+    )
+
+    expect(screen.getByRole('button', { name: /buy now/i })).toHaveStyle({
+      background: 'none',
+      // caso você queira conferir que a cor tenha o valor definido
+      // e não que caso a variavel global seja alterada o teste siga passando
+      // deve ser colocado no teste o valor direto
+      // por exemplo:
+      // color: '#F231A5'
+      // assim, caso a variavel global for alterada, o teste irá quebrar.
+      color: `${theme.colors.primary}`
+    })
+
+    expect(screen.getByRole('button', { name: /buy now/i })).toHaveStyleRule(
+      'background',
+      'none',
+      { modifier: ':hover' }
+    )
+  })
+
   it('should render Button as a link', () => {
     renderWithTheme(
       <Button as="a" href="/link">

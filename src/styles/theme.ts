@@ -54,4 +54,7 @@ export default {
     default: '0.3s ease-in-out',
     fast: '0.1s ease-in-out'
   }
+  // o as const serve para informar que os valores são constantes, nos ajudando na hora utilizar
+  // pois assim passamos o mouse por cima dos elementos nos arquivos de estilos e saberemos
+  // os valores das variaveis que estamos utilizando.
 } as const

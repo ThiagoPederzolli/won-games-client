@@ -1,6 +1,6 @@
 import styled, { css, DefaultTheme } from 'styled-components'
+import { darken } from 'polished'
 import { ButtonProps } from '.'
-
 // Pick é um método do TS que nos ajuda a pegar propriedades específicas
 // de uma interface, abaixo estamos pegando só a prop 'size' da interface ButtonProps
 type WrapperProps = {
@@ -9,7 +9,7 @@ type WrapperProps = {
   // unir as tipagens exclusivas de um elemento,
   // como as definidas só para o WrapperProps
   // junto com as importadas do ButtonProps
-} & Pick<ButtonProps, 'size' | 'fullWidth'>
+} & Pick<ButtonProps, 'size' | 'fullWidth' | 'minimal'>
 
 const wrapperModifiers = {
   small: (theme: DefaultTheme) => css`
@@ -40,11 +40,19 @@ const wrapperModifiers = {
         margin-left: ${theme.spacings.xxsmall};
       }
     }
+  `,
+  minimal: (theme: DefaultTheme) => css`
+    background: none;
+    color: ${theme.colors.primary};
+
+    &:hover {
+      color: ${darken(0.1, theme.colors.primary)};
+    }
   `
 }
 
 export const Wrapper = styled.button<WrapperProps>`
-  ${({ theme, size, fullWidth, hasIcon }) => css`
+  ${({ theme, size, fullWidth, hasIcon, minimal }) => css`
     // linear-gradient é um método do background para quando
     // queremos fazer um fundo que vá de um tom/cor
     // até outro, por exemplo, começar de um rosa mais claro
@@ -62,11 +70,15 @@ export const Wrapper = styled.button<WrapperProps>`
     font-family: ${theme.font.family};
 
     &:hover {
-      background: linear-gradient(180deg, #e35565 0%, #d958a6 50%);
+      background: ${minimal
+        ? 'none'
+        : 'linear-gradient(180deg, #e35565 0%, #d958a6 50%)'};
     }
-
+    // o uso da dupla negação !! em booleanos é aconselhavel quando
+    // a propriedade é opcional, pois ela pode vir como undefined.
     ${!!size && wrapperModifiers[size](theme)}
     ${!!fullWidth && wrapperModifiers.fullWidth()}
     ${!!hasIcon && wrapperModifiers.withIcon(theme)}
+    ${!!minimal && wrapperModifiers.minimal(theme)}
   `}
 `
