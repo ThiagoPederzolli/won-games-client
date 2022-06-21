@@ -1,4 +1,8 @@
-import React, { AnchorHTMLAttributes, ButtonHTMLAttributes } from 'react'
+import React, {
+  forwardRef,
+  AnchorHTMLAttributes,
+  ButtonHTMLAttributes
+} from 'react'
 import * as S from './styles'
 
 // tipos que aglobam propriedades comuns a elementos específicos
@@ -33,19 +37,30 @@ export type ButtonProps = {
   as?: React.ElementType
 } & ButtonTypes
 
-const Button = ({
-  children,
-  size = 'medium',
-  fullWidth = false,
-  icon,
-  minimal = false,
-  ...props
-}: ButtonProps) => (
+// para que o passHref funcione, teremos que usar esse método forwardRef
+// para receber as props de ref, para passar para seus elementos e assim
+// o passHref funcionar corretamente.
+
+// para isso, precisamos tipar adequadamente o componente
+// o React.ForwardRefRenderFunction indica que é um componente
+// que retorna um forwardRef e ela aceita algumas tipagens genéricas
+const Button: React.ForwardRefRenderFunction<S.WrapperProps, ButtonProps> = (
+  {
+    children,
+    size = 'medium',
+    fullWidth = false,
+    icon,
+    minimal = false,
+    ...props
+  },
+  ref
+) => (
   <S.Wrapper
     fullWidth={fullWidth}
     size={size}
     hasIcon={!!icon}
     minimal={minimal}
+    ref={ref}
     {...props}
   >
     {!!icon && icon}
@@ -53,4 +68,4 @@ const Button = ({
   </S.Wrapper>
 )
 
-export default Button
+export default forwardRef(Button)

@@ -3,7 +3,7 @@ import { darken } from 'polished'
 import { ButtonProps } from '.'
 // Pick é um método do TS que nos ajuda a pegar propriedades específicas
 // de uma interface, abaixo estamos pegando só a prop 'size' da interface ButtonProps
-type WrapperProps = {
+export type WrapperProps = {
   hasIcon: boolean
   // o & depoi das chaves, representa o Union, que permite
   // unir as tipagens exclusivas de um elemento,
