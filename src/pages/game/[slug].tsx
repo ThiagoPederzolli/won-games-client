@@ -9,9 +9,14 @@ export default function Index(props: GameTemplateProps) {
 }
 
 // gerar em build time (/game/bla, /bame/foo ...)
+// esse método irá informar os paths que devem ser gerados em build time
 export async function getStaticPaths() {
   return {
+    // normalmente o path é constituido por um fetch que fazemos da api
+    // onde baixamos todas as possíveis rotas(slugs)
     paths: [{ params: { slug: 'cyberpunk-2077' } }],
+    // o fallback true faz com que se a página não tivesse sido gerada no tempo de build, ela seja gerada
+    // ao passar fallback false, forçamos que a página seja gerada em build time
     fallback: false
   }
 }
