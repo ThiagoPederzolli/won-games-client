@@ -48,11 +48,17 @@ const wrapperModifiers = {
     &:hover {
       color: ${darken(0.1, theme.colors.primary)};
     }
+  `,
+  disabled: () => css`
+    &:disabled {
+      cursor: not-allowed;
+      filter: saturate(30%);
+    }
   `
 }
 
 export const Wrapper = styled.button<WrapperProps>`
-  ${({ theme, size, fullWidth, hasIcon, minimal }) => css`
+  ${({ theme, size, fullWidth, hasIcon, minimal, disabled }) => css`
     // linear-gradient é um método do background para quando
     // queremos fazer um fundo que vá de um tom/cor
     // até outro, por exemplo, começar de um rosa mais claro
@@ -80,5 +86,6 @@ export const Wrapper = styled.button<WrapperProps>`
     ${!!fullWidth && wrapperModifiers.fullWidth()}
     ${!!hasIcon && wrapperModifiers.withIcon(theme)}
     ${!!minimal && wrapperModifiers.minimal(theme)}
+    ${disabled && wrapperModifiers.disabled()};
   `}
 `
